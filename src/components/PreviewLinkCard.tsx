@@ -46,21 +46,37 @@ export interface PreviewLinkCardTriggerProps extends React.AnchorHTMLAttributes<
   children: React.ReactNode;
 }
 
-export function PreviewLinkCardTrigger({ children, className, ...props }: PreviewLinkCardTriggerProps) {
+export function PreviewLinkCardTrigger({
+  children,
+  className,
+  onMouseEnter,
+  onMouseLeave,
+  onMouseMove,
+  ...props
+}: PreviewLinkCardTriggerProps) {
   const context = useContext(PreviewLinkCardContext);
   if (!context) return <>{children}</>;
 
-  const handleMouseEnter = (e: React.MouseEvent) => {
+  const handleMouseEnter = (e: React.MouseEvent<HTMLAnchorElement>) => {
     context.setMousePos({ x: e.clientX, y: e.clientY });
     context.setIsOpen(true);
+    if (onMouseEnter) {
+      onMouseEnter(e);
+    }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLAnchorElement>) => {
     context.setIsOpen(false);
+    if (onMouseLeave) {
+      onMouseLeave(e);
+    }
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
     context.setMousePos({ x: e.clientX, y: e.clientY });
+    if (onMouseMove) {
+      onMouseMove(e);
+    }
   };
 
   return (
