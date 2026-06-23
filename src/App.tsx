@@ -827,7 +827,7 @@ function App() {
 
         <header style={{ marginBottom: '24px' }}>
           <PreviewLinkCard href="https://github.com/prathamanvekar" followCursor={true}>
-            <PreviewLinkCardTrigger>
+            <PreviewLinkCardTrigger target="_blank" rel="noopener noreferrer">
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: '12px' }}>
                 <img src={megumiImg} alt="logo" className="site-logo" />
                 <h1 style={{ margin: 0, display: 'inline-block' }}>prathamesh anvekar</h1>
